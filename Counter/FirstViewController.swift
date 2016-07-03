@@ -10,11 +10,16 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    
+
+    @IBOutlet weak var centerImageView: UIImageView!
+    @IBOutlet weak var unitsImageView: UIImageView!
+    @IBOutlet weak var decimalImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        centerImageView.image = UIImage(named: "number_0_changed")
+       // unitsImageView.image = UIImage(named: "number_0_changed")
+       // decimalImageView.image = UIImage(named: "number_0_changed")
         // Do any additional setup after loading the view, typically from a nib.
     }
 

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Count-->
@@ -16,11 +17,39 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTt-lU-bu0">
+                                <rect key="frame" x="394" y="72" width="186" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mw6-Ba-2qC">
+                                <rect key="frame" x="20" y="72" width="186" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="50" verticalHuggingPriority="50" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rsz-mY-Zbv" userLabel="Center Image View">
+                                <rect key="frame" x="207" y="72" width="186" height="128"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.12941176470588234" green="0.56862745098039214" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="NTt-lU-bu0" firstAttribute="leading" secondItem="mw6-Ba-2qC" secondAttribute="trailing" id="EGe-VO-vpf"/>
+                            <constraint firstItem="rsz-mY-Zbv" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="KUH-ro-DwA"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="mw6-Ba-2qC" secondAttribute="leading" id="aJT-2f-3l5"/>
+                            <constraint firstItem="rsz-mY-Zbv" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="52" id="si4-6R-4jY"/>
+                            <constraint firstItem="mw6-Ba-2qC" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="52" id="yqr-XC-Udo"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Xml-t5-Oq2" appends="YES" id="uS7-lG-y3z"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Count" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="centerImageView" destination="rsz-mY-Zbv" id="l3a-wb-fbT"/>
+                        <outlet property="decimalImageView" destination="mw6-Ba-2qC" id="0hU-5A-fBP"/>
+                        <outlet property="unitsImageView" destination="NTt-lU-bu0" id="zdD-ER-dKe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Xml-t5-Oq2"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
