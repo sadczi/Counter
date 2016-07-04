@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9ED6FDF51D2A7A6200F9FC89 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6FDF41D2A7A6200F9FC89 /* DataHandler.m */; };
+		9ED6FDFA1D2A925400F9FC89 /* DisplayHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6FDF91D2A925400F9FC89 /* DisplayHandler.swift */; };
 		9EDBEBE11D27C15800765EFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBEBE01D27C15800765EFA /* AppDelegate.swift */; };
 		9EDBEBE31D27C15800765EFA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBEBE21D27C15800765EFA /* FirstViewController.swift */; };
 		9EDBEBE51D27C15800765EFA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBEBE41D27C15800765EFA /* SecondViewController.swift */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9ED6FDF41D2A7A6200F9FC89 /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
+		9ED6FDF61D2A837F00F9FC89 /* Counter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Counter-Bridging-Header.h"; sourceTree = "<group>"; };
+		9ED6FDF91D2A925400F9FC89 /* DisplayHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayHandler.swift; sourceTree = "<group>"; };
 		9EDBEBDD1D27C15800765EFA /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EDBEBE01D27C15800765EFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EDBEBE21D27C15800765EFA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -102,10 +107,13 @@
 				9EDBEBE01D27C15800765EFA /* AppDelegate.swift */,
 				9EDBEBE21D27C15800765EFA /* FirstViewController.swift */,
 				9EDBEBE41D27C15800765EFA /* SecondViewController.swift */,
+				9ED6FDF61D2A837F00F9FC89 /* Counter-Bridging-Header.h */,
 				9EDBEBE61D27C15800765EFA /* Main.storyboard */,
 				9EDBEBE91D27C15800765EFA /* Assets.xcassets */,
 				9EDBEBEB1D27C15800765EFA /* LaunchScreen.storyboard */,
 				9EDBEBEE1D27C15800765EFA /* Info.plist */,
+				9ED6FDF41D2A7A6200F9FC89 /* DataHandler.m */,
+				9ED6FDF91D2A925400F9FC89 /* DisplayHandler.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -259,7 +267,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ED6FDF51D2A7A6200F9FC89 /* DataHandler.m in Sources */,
 				9EDBEBE51D27C15800765EFA /* SecondViewController.swift in Sources */,
+				9ED6FDFA1D2A925400F9FC89 /* DisplayHandler.swift in Sources */,
 				9EDBEBE11D27C15800765EFA /* AppDelegate.swift in Sources */,
 				9EDBEBE31D27C15800765EFA /* FirstViewController.swift in Sources */,
 			);
@@ -405,10 +415,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Counter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Daniel-Sadka.Counter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Counter/Counter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -416,10 +429,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Counter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Daniel-Sadka.Counter";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Counter/Counter-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -488,6 +503,7 @@
 				9EDBEC091D27C15900765EFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9EDBEC0A1D27C15900765EFA /* Build configuration list for PBXNativeTarget "CounterTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +512,7 @@
 				9EDBEC0C1D27C15900765EFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9EDBEC0D1D27C15900765EFA /* Build configuration list for PBXNativeTarget "CounterUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +521,7 @@
 				9EDBEC0F1D27C15900765EFA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class FirstViewController: UIViewController {
 
 
@@ -15,18 +16,36 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var unitsImageView: UIImageView!
     @IBOutlet weak var decimalImageView: UIImageView!
     
+    let dataHandler: DataHandler = DataHandler()
+    let displayHandler: DisplayHandler = DisplayHandler()
+    var counter: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        centerImageView.image = UIImage(named: "number_0_changed")
-       // unitsImageView.image = UIImage(named: "number_0_changed")
-       // decimalImageView.image = UIImage(named: "number_0_changed")
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.taped))
+        centerImageView.image = UIImage(named: "number_0")
+        self.view.addGestureRecognizer(tap)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func taped(){
+        dataHandler.units.successor()
+        counter.successor()
+        if(dataHandler.checkUnits()){
+            
+        }
+        if(dataHandler.checkDecimals()){
+            
+        }
+    }
+    
 
 
 }

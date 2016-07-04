@@ -28,7 +28,7 @@
                                 <rect key="frame" x="207" y="72" width="186" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.12941176470588234" green="0.56862745098039214" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="NTt-lU-bu0" firstAttribute="leading" secondItem="mw6-Ba-2qC" secondAttribute="trailing" id="EGe-VO-vpf"/>
@@ -37,11 +37,9 @@
                             <constraint firstItem="rsz-mY-Zbv" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="52" id="si4-6R-4jY"/>
                             <constraint firstItem="mw6-Ba-2qC" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="52" id="yqr-XC-Udo"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Xml-t5-Oq2" appends="YES" id="uS7-lG-y3z"/>
-                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Count" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="c1M-xF-8ci"/>
                     <connections>
                         <outlet property="centerImageView" destination="rsz-mY-Zbv" id="l3a-wb-fbT"/>
                         <outlet property="decimalImageView" destination="mw6-Ba-2qC" id="0hU-5A-fBP"/>
@@ -49,7 +47,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Xml-t5-Oq2"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
