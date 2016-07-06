@@ -9,15 +9,19 @@
 import UIKit
 
 class DisplayHandler: NSObject {
-    var numbers: [UIImage] = []
-    
-    
     
     override init(){
         super.init()
-        
-        for index in 0...9{
-            numbers.append(UIImage(named: "number_\(index)")!)
-        }
     }
+    
+    func returnImagerForImageView(number:Int) -> UIImage{
+        return UIImage(named: "number_\(number)")!
+    }
+    
+    func returnSmallImageForImageView(number:Int) -> UIImage{
+        return UIImage(named: "number_\(number)_smal")!
+    }
+    
+
+    
 }

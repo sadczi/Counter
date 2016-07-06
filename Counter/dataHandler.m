@@ -18,6 +18,7 @@
 -() init;
 -(Boolean) checkUnits;
 -(Boolean) checkDecimals;
+-(void) reset;
 
 @end
 
@@ -49,6 +50,20 @@
         return true;
     }
     return false;
+}
+
+-(Boolean) checkIfFirstTen{
+    if(self.decimals == 0 && self.counter < 10){
+        return true;
+    }
+    return false;
+}
+
+-(void) reset{
+    self.units = 0;
+    self.counter = 0;
+    self.decimals = 0;
+    self.hundrets = 0;
 }
 
 @end
