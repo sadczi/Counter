@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E8A81AA1D2E6DCC000EAA0D /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8A81A91D2E6DCC000EAA0D /* ArrayExtension.swift */; };
 		9EA3E14F1D2D0D34003B3F85 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3E14E1D2D0D34003B3F85 /* SecondViewController.swift */; };
 		9EA3E1511D2D0F33003B3F85 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA3E1501D2D0F33003B3F85 /* Save.swift */; };
 		9ED6FDF51D2A7A6200F9FC89 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ED6FDF41D2A7A6200F9FC89 /* DataHandler.m */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E8A81A91D2E6DCC000EAA0D /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		9EA3E14E1D2D0D34003B3F85 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		9EA3E1501D2D0F33003B3F85 /* Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		9ED6FDF41D2A7A6200F9FC89 /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				9ED6FDF41D2A7A6200F9FC89 /* DataHandler.m */,
 				9ED6FDF91D2A925400F9FC89 /* DisplayHandler.swift */,
 				9EA3E1501D2D0F33003B3F85 /* Save.swift */,
+				9E8A81A91D2E6DCC000EAA0D /* ArrayExtension.swift */,
 			);
 			path = Counter;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				9ED6FDFA1D2A925400F9FC89 /* DisplayHandler.swift in Sources */,
 				9EA3E1511D2D0F33003B3F85 /* Save.swift in Sources */,
 				9EDBEBE11D27C15800765EFA /* AppDelegate.swift in Sources */,
+				9E8A81AA1D2E6DCC000EAA0D /* ArrayExtension.swift in Sources */,
 				9EA3E14F1D2D0D34003B3F85 /* SecondViewController.swift in Sources */,
 				9EDBEBE31D27C15800765EFA /* FirstViewController.swift in Sources */,
 			);

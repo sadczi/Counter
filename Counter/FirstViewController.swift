@@ -11,7 +11,8 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-
+    var saveingLoadingArray = [Save]()
+    
     @IBOutlet weak var centerImageView: UIImageView!
     @IBOutlet weak var unitsImageView: UIImageView!
     @IBOutlet weak var decimalImageView: UIImageView!
@@ -26,6 +27,9 @@ class FirstViewController: UIViewController {
         centerImageView.hidden = false
         unitsImageView.hidden = true
         decimalImageView.hidden = true
+        saveingLoadingArray.append(save)
+        saveingLoadingArray.save()
+        
     }
    
     let dataHandler: DataHandler = DataHandler()
@@ -43,6 +47,8 @@ class FirstViewController: UIViewController {
         label.hidden = true
         saveButton.backgroundColor = UIColor.redColor()
         saveButton.frame.size.width = 300
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        saveingLoadingArray = appDelegate.saveingLoadingArray
         
         
     }

@@ -34,6 +34,15 @@ class Save: NSObject {
         
     }
     
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(score, forKey:"score")
+        aCoder.encodeObject(dateTimeComponents, forKey:"dateTimeComponents")
+    }
+    
+    init (coder aDecoder: NSCoder!) {
+        self.score = aDecoder.decodeObjectForKey("score") as! Int
+        self.dateTimeComponents = aDecoder.decodeObjectForKey("dateTimeComponents")! as AnyObject
+    }
 
 
 
