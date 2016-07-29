@@ -11,7 +11,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    var saveingLoadingArray = [Save]()
+    var savingLoadingArray = [Save]()
     
     @IBOutlet weak var centerImageView: UIImageView!
     @IBOutlet weak var unitsImageView: UIImageView!
@@ -19,6 +19,7 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var saveButton: UIButton!
+    
     @IBAction func saveAction(sender: AnyObject) {
         let save = Save(value: dataHandler.counter)
         dataHandler.reset()
@@ -27,8 +28,8 @@ class FirstViewController: UIViewController {
         centerImageView.hidden = false
         unitsImageView.hidden = true
         decimalImageView.hidden = true
-        saveingLoadingArray.append(save)
-        saveingLoadingArray.save()
+        savingLoadingArray.append(save)
+        savingLoadingArray.save()
         
     }
    
@@ -42,13 +43,13 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.taped))
-        centerImageView.image = UIImage(named: "number_0")
+        centerImageView.image = displayHandler.returnImagerForImageView(0)
         self.view.addGestureRecognizer(tap)
         label.hidden = true
         saveButton.backgroundColor = UIColor.redColor()
         saveButton.frame.size.width = 300
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        saveingLoadingArray = appDelegate.saveingLoadingArray
+        savingLoadingArray = appDelegate.savingLoadingArray
         
         
     }
@@ -80,6 +81,6 @@ class FirstViewController: UIViewController {
             }
         print(dataHandler.counter)
     }
-
 }
+
 

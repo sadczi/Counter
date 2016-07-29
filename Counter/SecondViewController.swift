@@ -8,23 +8,41 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet weak var table: UITableView!
     
-    var saveingLoadingArray = [Save]()
+    var savingLoadingArray = [Save]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        table.dataSource = self
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        saveingLoadingArray = appDelegate.saveingLoadingArray
+        savingLoadingArray = appDelegate.savingLoadingArray
         loadSaves()
-        print("yolo")
-        let tmp = saveingLoadingArray.popLast()
-        print(tmp!.score)
-        print(tmp?.dateTimeComponents.day)
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        print(savingLoadingArray.count)
     }
-
+    
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
+    {
+        let tmpvalue = savingLoadingArray.count
+        return tmpvalue
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! Cell
+        cell.leftTextfield.text = String(savingLoadingArray[indexPath.row].score) + "    \(String(savingLoadingArray[indexPath.row].dateTimeComponents.day))/\(String(savingLoadingArray[indexPath.row].dateTimeComponents.month))/\(String(savingLoadingArray[indexPath.row].dateTimeComponents.year))"
+        
+        return cell
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,10 +52,9 @@ class SecondViewController: UIViewController {
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
         let path: AnyObject = paths[0]
         let arrPath = path.stringByAppendingString("/array.plist")
-        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObjectWithFile(arrPath) as! [Save] {
-            self.saveingLoadingArray = tempArr
+        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObjectWithFile(arrPath) as? [Save] {
+            self.savingLoadingArray = tempArr
         }
     }
-
 }
 
