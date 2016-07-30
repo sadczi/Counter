@@ -19,16 +19,21 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
         table.dataSource = self
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         savingLoadingArray = appDelegate.savingLoadingArray
-        loadSaves()
         
-        
-        print(savingLoadingArray.count)
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        let tmpvalue = savingLoadingArray.count
+        let tmpvalue = self.savingLoadingArray.count
         return tmpvalue
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        loadSaves()
+        print(savingLoadingArray.count)
+        table.reloadData()
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
