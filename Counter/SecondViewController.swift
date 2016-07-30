@@ -39,7 +39,7 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! Cell
-        cell.leftTextfield.text = String(savingLoadingArray[indexPath.row].score) + "    \(String(savingLoadingArray[indexPath.row].dateTimeComponents.day))/\(String(savingLoadingArray[indexPath.row].dateTimeComponents.month))/\(String(savingLoadingArray[indexPath.row].dateTimeComponents.year))"
+        cell.leftTextfield.text = "Count = " + String(savingLoadingArray[indexPath.row].score) +  "    \(String(savingLoadingArray[indexPath.row].dateTimeComponents.day))/\(String(savingLoadingArray[indexPath.row].dateTimeComponents.month))/\(String(savingLoadingArray[indexPath.row].dateTimeComponents.year))" + "    \(String(savingLoadingArray[indexPath.row].dateTimeComponents.hour)):\(String(savingLoadingArray[indexPath.row].dateTimeComponents.minute)):\(String(savingLoadingArray[indexPath.row].dateTimeComponents.second))"
         
         return cell
     }
