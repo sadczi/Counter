@@ -15,7 +15,7 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.table.delegate = self
         table.dataSource = self
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         savingLoadingArray = appDelegate.savingLoadingArray

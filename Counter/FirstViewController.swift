@@ -16,8 +16,8 @@ class FirstViewController: UIViewController {
     var centerImageView: UIImageView = UIImageView()
     var unitsImageView: UIImageView = UIImageView()
     var decimalImageView: UIImageView = UIImageView()
+    var label: UILabel!
     
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     
     @IBAction func saveAction(sender: AnyObject) {
@@ -44,6 +44,8 @@ class FirstViewController: UIViewController {
         view.addSubview(centerImageView)
         view.addSubview(unitsImageView)
         view.addSubview(decimalImageView)
+        label = UILabel(frame: CGRect(x:0, y: 0, width: 100, height: 50))
+        view.addSubview(label)
         let tap = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.taped))
         centerImageView.image = displayHandler.returnImagerForImageView(0)
         self.view.addGestureRecognizer(tap)
@@ -53,6 +55,11 @@ class FirstViewController: UIViewController {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         savingLoadingArray = appDelegate.savingLoadingArray
         imageViewsSizing()
+        print("center \(view.center)")
+        print("Image center \(centerImageView.center)")
+        print("height \(UIScreen.mainScreen().bounds.size.height)")
+        print("width  \(UIScreen.mainScreen().bounds.size.width)")
+        
         
     }
 
@@ -64,6 +71,30 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        UIDevice.currentDevice().orientation.isFlat
+        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+            print("Landscape")
+            imageViewsSizing(size)
+            print("center \(view.center)")
+            print("Image center \(centerImageView.center)")
+            print("height \(UIScreen.mainScreen().bounds.size.height)")
+            print("width  \(UIScreen.mainScreen().bounds.size.width)")
+            print(size)
+            
+        } else {
+            print("Portrait")
+            imageViewsSizing(size)
+            print("center \(view.center)")
+            print("Image center \(centerImageView.center)")
+            print("height \(UIScreen.mainScreen().bounds.size.height)")
+            print("width  \(UIScreen.mainScreen().bounds.size.width)")
+            print(size)
+            
+        }
+    }
+    
     
     func imageViewsSizing(){
         let width = UIScreen.mainScreen().bounds.size.width
@@ -88,8 +119,50 @@ class FirstViewController: UIViewController {
         unitsImageView.center.x += unitsImageView.bounds.width / 2
         decimalImageView.center.x -= decimalImageView.bounds.width / 2
         
+        centerImageView.center.y -= centerImageView.bounds.height / 2
+        unitsImageView.center.y -= unitsImageView.bounds.height / 2
+        decimalImageView.center.y -= decimalImageView.bounds.height / 2
+        
+        label.center = centerImageView.center
+        label.center.y += centerImageView.bounds.height * 3/4
+        label.center.x += label.bounds.width / 4
         
     }
+    
+    func imageViewsSizing(size: CGSize){
+        let width = size.width
+        let height = size.height
+        
+        
+        
+        centerImageView.bounds.size.width = width / 2
+        centerImageView.bounds.size.height = height / 3
+        
+        unitsImageView.bounds.size.width = width / 3
+        unitsImageView.bounds.size.height = height / 3
+        
+        decimalImageView.bounds.size.width = width / 3
+        decimalImageView.bounds.size.height = height / 3
+        
+        centerImageView.center = CGPoint(x: size.width / 2 , y: size.height / 2)
+        unitsImageView.center = CGPoint(x: size.width / 2 , y: size.height / 2)
+        decimalImageView.center = CGPoint(x: size.width / 2 , y: size.height / 2)
+        
+        
+        unitsImageView.center.x += unitsImageView.bounds.width / 2
+        decimalImageView.center.x -= decimalImageView.bounds.width / 2
+        
+        centerImageView.center.y -= centerImageView.bounds.height / 2
+        unitsImageView.center.y -= unitsImageView.bounds.height / 2
+        decimalImageView.center.y -= decimalImageView.bounds.height / 2
+        
+        label.center = centerImageView.center
+        label.center.y += centerImageView.bounds.height * 3/4
+        label.center.x += label.bounds.width / 4
+        
+    }
+
+    
     
     func taped(){
         dataHandler.units = dataHandler.units + 1
