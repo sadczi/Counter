@@ -79,6 +79,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="EKW-m7-XCY" firstAttribute="centerY" secondItem="7tH-7u-Os5" secondAttribute="centerY" id="BII-DI-JtG"/>
+                                                <constraint firstItem="EKW-m7-XCY" firstAttribute="top" secondItem="7tH-7u-Os5" secondAttribute="topMargin" constant="-1" id="dbc-sB-cgV"/>
                                                 <constraint firstItem="EKW-m7-XCY" firstAttribute="centerX" secondItem="7tH-7u-Os5" secondAttribute="centerX" id="nPD-9p-4hL"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -95,10 +96,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="1UR-Db-Swp"/>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="FcQ-Yt-GRX"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fJd-cb-DXH" secondAttribute="bottom" constant="8" symbolic="YES" id="W1s-2y-O8Q"/>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="fmA-Li-v7h"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="Ac5-83-zNI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fJd-cb-DXH" secondAttribute="leading" id="EKX-TK-Shw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fJd-cb-DXH" secondAttribute="trailing" id="fAl-Lv-Pku"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fJd-cb-DXH" secondAttribute="bottom" constant="8" symbolic="YES" id="v9d-a5-KhN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="second" id="cPa-gy-q4n"/>
