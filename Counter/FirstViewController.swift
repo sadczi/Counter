@@ -11,8 +11,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    var savingLoadingArray = [Save]()
-    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     var centerImageView: UIImageView = UIImageView()
     var unitsImageView: UIImageView = UIImageView()
     var decimalImageView: UIImageView = UIImageView()
@@ -23,13 +22,13 @@ class FirstViewController: UIViewController {
     @IBAction func saveAction(sender: AnyObject) {
         let save = Save(value: dataHandler.counter)
         dataHandler.reset()
-        centerImageView.image = UIImage(named: "number_0")
+        centerImageView.image = displayHandler.returnImagerForImageView(0)
         label.hidden = true
         centerImageView.hidden = false
         unitsImageView.hidden = true
         decimalImageView.hidden = true
-        savingLoadingArray.append(save)
-        savingLoadingArray.save()
+        appDelegate.savingLoadingArray.append(save)
+        appDelegate.savingLoadingArray.save()
         
     }
    
@@ -52,13 +51,13 @@ class FirstViewController: UIViewController {
         label.hidden = true
         saveButton.backgroundColor = UIColor.redColor()
         saveButton.frame.size.width = 300
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        savingLoadingArray = appDelegate.savingLoadingArray
+        loadSaves()
         imageViewsSizing()
         print("center \(view.center)")
         print("Image center \(centerImageView.center)")
         print("height \(UIScreen.mainScreen().bounds.size.height)")
         print("width  \(UIScreen.mainScreen().bounds.size.width)")
+        
         
         
     }
@@ -102,7 +101,7 @@ class FirstViewController: UIViewController {
         
         
         
-        centerImageView.bounds.size.width = width / 2
+        centerImageView.bounds.size.width = width / 3
         centerImageView.bounds.size.height = height / 3
         
         unitsImageView.bounds.size.width = width / 3
@@ -134,8 +133,12 @@ class FirstViewController: UIViewController {
         let height = size.height
         
         
+        if( width > UIScreen.mainScreen().bounds.size.width ){
+            centerImageView.bounds.size.width = width / 3
+        }else{
+            centerImageView.bounds.size.width = width / 2
+        }
         
-        centerImageView.bounds.size.width = width / 2
         centerImageView.bounds.size.height = height / 3
         
         unitsImageView.bounds.size.width = width / 3
@@ -162,7 +165,14 @@ class FirstViewController: UIViewController {
         
     }
 
-    
+    func loadSaves(){
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
+        let path: AnyObject = paths[0]
+        let arrPath = path.stringByAppendingString("/array.plist")
+        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObjectWithFile(arrPath) as? [Save] {
+            self.appDelegate.savingLoadingArray = tempArr
+        }
+    }
     
     func taped(){
         dataHandler.units = dataHandler.units + 1

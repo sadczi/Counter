@@ -70,22 +70,55 @@
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" highlighted="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-m7-XCY">
-                                                    <rect key="frame" x="232" y="7" width="97" height="30"/>
-                                                    <accessibility key="accessibilityConfiguration" identifier="leftTextfield"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B09-9H-t7E">
+                                                    <rect key="frame" x="40" y="4" width="480" height="35"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="EKW-m7-XCY" firstAttribute="centerY" secondItem="7tH-7u-Os5" secondAttribute="centerY" id="BII-DI-JtG"/>
-                                                <constraint firstItem="EKW-m7-XCY" firstAttribute="top" secondItem="7tH-7u-Os5" secondAttribute="topMargin" constant="-1" id="dbc-sB-cgV"/>
-                                                <constraint firstItem="EKW-m7-XCY" firstAttribute="centerX" secondItem="7tH-7u-Os5" secondAttribute="centerX" id="nPD-9p-4hL"/>
+                                                <constraint firstItem="B09-9H-t7E" firstAttribute="leading" secondItem="7tH-7u-Os5" secondAttribute="leadingMargin" constant="32" id="YXP-RF-lQ8"/>
+                                                <constraint firstItem="B09-9H-t7E" firstAttribute="top" secondItem="7tH-7u-Os5" secondAttribute="topMargin" constant="-4" id="bra-rg-wwP"/>
+                                                <constraint firstItem="B09-9H-t7E" firstAttribute="centerX" secondItem="7tH-7u-Os5" secondAttribute="centerX" id="dRV-zA-vaS"/>
+                                                <constraint firstItem="B09-9H-t7E" firstAttribute="centerY" secondItem="7tH-7u-Os5" secondAttribute="centerY" id="rgy-cn-FBh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="leftTextfield" destination="EKW-m7-XCY" id="kZZ-Oq-XET"/>
+                                            <outlet property="textView" destination="B09-9H-t7E" id="Ma5-Kh-6jY"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ResetCell" id="UhU-9Y-thJ" userLabel="ResetCell" customClass="ResetCell" customModule="Counter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="560" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UhU-9Y-thJ" id="8OS-RX-2Vj">
+                                            <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vjD-eU-FG2">
+                                                    <rect key="frame" x="42" y="7" width="480" height="30"/>
+                                                    <state key="normal" title="Press to reset the history"/>
+                                                    <connections>
+                                                        <action selector="ResetAction:" destination="UhU-9Y-thJ" eventType="touchUpInside" id="GJI-BZ-U0h"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vjD-eU-FG2" secondAttribute="trailing" constant="30" id="6NX-rf-ffn"/>
+                                                <constraint firstItem="vjD-eU-FG2" firstAttribute="centerY" secondItem="8OS-RX-2Vj" secondAttribute="centerY" id="j0g-l7-bGx"/>
+                                                <constraint firstItem="vjD-eU-FG2" firstAttribute="leading" secondItem="8OS-RX-2Vj" secondAttribute="leadingMargin" constant="34" id="jRk-81-66r"/>
+                                                <constraint firstItem="vjD-eU-FG2" firstAttribute="leading" secondItem="8OS-RX-2Vj" secondAttribute="leadingMargin" constant="34" id="tjH-k4-QIn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vjD-eU-FG2" secondAttribute="trailing" constant="30" id="uMv-Jd-ucf"/>
+                                                <constraint firstItem="vjD-eU-FG2" firstAttribute="centerX" secondItem="8OS-RX-2Vj" secondAttribute="centerX" id="vec-Uj-qiJ"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="6NX-rf-ffn"/>
+                                                    <exclude reference="jRk-81-66r"/>
+                                                    <exclude reference="vec-Uj-qiJ"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -96,10 +129,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="Ac5-83-zNI"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="fJd-cb-DXH" secondAttribute="leading" id="EKX-TK-Shw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fJd-cb-DXH" secondAttribute="trailing" id="fAl-Lv-Pku"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fJd-cb-DXH" secondAttribute="bottom" constant="8" symbolic="YES" id="v9d-a5-KhN"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="1YW-to-G0m"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="FlL-vI-ML4"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fJd-cb-DXH" secondAttribute="bottom" constant="8" symbolic="YES" id="Lez-Dq-veh"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="hwe-3b-9SF"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="second" id="cPa-gy-q4n"/>
@@ -136,4 +169,5 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

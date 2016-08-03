@@ -10,8 +10,7 @@ import UIKit
 
 class Cell: UITableViewCell {
     
-    
-    @IBOutlet weak var leftTextfield: UITextField!
+    @IBOutlet weak var textView: UITextView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
