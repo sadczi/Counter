@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
+class SecondViewController: UIViewController , UITableViewDataSource, UITableViewDelegate , ResetCellDelegate {
     @IBOutlet weak var table: UITableView!
     
     var countingCells:Int = 0
@@ -18,7 +18,6 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
         super.viewDidLoad()
         self.table.delegate = self
         table.dataSource = self
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -26,7 +25,6 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
         loadSaves()
         print(appDelegate.savingLoadingArray.count)
         table.reloadData()
-        
     }
 
     func dataStringDisplayPrepare(input: String) -> String {
@@ -46,7 +44,7 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
     {
         if(countingCells == appDelegate.self.savingLoadingArray.count){
             let cell = tableView.dequeueReusableCellWithIdentifier("ResetCell", forIndexPath: indexPath) as! ResetCell
-            
+                cell.cellDelegate = self
                 countingCells = 0
             
                 return cell
@@ -60,25 +58,26 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
             cell.textView.userInteractionEnabled = true
             cell.textView.editable = false
             countingCells += 1
-        
+            
             return cell
         }
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
-        return self.appDelegate.savingLoadingArray.count + 1
+        if ( (self.appDelegate.savingLoadingArray.count + 1) == 1 ){
+            return 0
+        }else{
+            return self.appDelegate.savingLoadingArray.count + 1
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func resetCellDidSelectButton(cell: ResetCell) {
+        table.reloadData()
     }
     
     func loadSaves(){

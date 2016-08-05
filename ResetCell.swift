@@ -8,15 +8,26 @@
 
 import UIKit
 
-class ResetCell: UITableViewCell {
+protocol ResetCellDelegate:class {
+    func resetCellDidSelectButton(cell: ResetCell)
+}
 
+class ResetCell: UITableViewCell , UITableViewDelegate {
+
+    var cellDelegate: ResetCellDelegate?
+    
     @IBAction func ResetAction(sender: AnyObject) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.savingLoadingArray.removeAll()
         appDelegate.savingLoadingArray.save()
-        
+        selectedAction()
+        print("reloaded")
     }
 
+    func selectedAction() {
+        self.cellDelegate?.resetCellDidSelectButton(self)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

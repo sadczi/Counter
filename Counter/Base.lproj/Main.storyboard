@@ -50,7 +50,7 @@
         <!--History-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Counter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="History" id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -122,17 +122,17 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="QS5-Rx-YEW" id="Pih-6R-f16"/>
-                                    <outlet property="delegate" destination="QS5-Rx-YEW" id="0Pi-xh-ElO"/>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="yfD-6H-OPh"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="tdD-YU-P3e"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="1YW-to-G0m"/>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="FlL-vI-ML4"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fJd-cb-DXH" secondAttribute="bottom" constant="8" symbolic="YES" id="Lez-Dq-veh"/>
-                            <constraint firstItem="fJd-cb-DXH" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="hwe-3b-9SF"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="4dL-1O-l0f"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="98B-7g-Kcq"/>
+                            <constraint firstItem="fJd-cb-DXH" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="DbV-fP-RHr"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fJd-cb-DXH" secondAttribute="bottom" constant="8" symbolic="YES" id="bhh-IW-m4j"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="History" image="second" id="cPa-gy-q4n"/>
@@ -148,7 +148,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="Counter" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

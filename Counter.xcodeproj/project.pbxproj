@@ -21,6 +21,7 @@
 		9EDBEBED1D27C15800765EFA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EDBEBEB1D27C15800765EFA /* LaunchScreen.storyboard */; };
 		9EDBEBF81D27C15900765EFA /* CounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBEBF71D27C15900765EFA /* CounterTests.swift */; };
 		9EDBEC031D27C15900765EFA /* CounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBEC021D27C15900765EFA /* CounterUITests.swift */; };
+		9EFAE53A1D54E3B000E8F26B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EFAE5391D54E3B000E8F26B /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		9EDBEBFE1D27C15900765EFA /* CounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EDBEC021D27C15900765EFA /* CounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterUITests.swift; sourceTree = "<group>"; };
 		9EDBEC041D27C15900765EFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EFAE5391D54E3B000E8F26B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				9EDBEBE21D27C15800765EFA /* FirstViewController.swift */,
 				9ED6FDF61D2A837F00F9FC89 /* Counter-Bridging-Header.h */,
 				9EDBEBE61D27C15800765EFA /* Main.storyboard */,
+				9EFAE5391D54E3B000E8F26B /* TabBarController.swift */,
 				9E3BEAE21D4A244200265FC5 /* Cell.swift */,
 				9E0654D21D52249100EB9D80 /* ResetCell.swift */,
 				9EDBEBE91D27C15800765EFA /* Assets.xcassets */,
@@ -283,6 +286,7 @@
 				9ED6FDF51D2A7A6200F9FC89 /* DataHandler.m in Sources */,
 				9ED6FDFA1D2A925400F9FC89 /* DisplayHandler.swift in Sources */,
 				9EA3E1511D2D0F33003B3F85 /* Save.swift in Sources */,
+				9EFAE53A1D54E3B000E8F26B /* TabBarController.swift in Sources */,
 				9EDBEBE11D27C15800765EFA /* AppDelegate.swift in Sources */,
 				9E8A81AA1D2E6DCC000EAA0D /* ArrayExtension.swift in Sources */,
 				9E0654D31D52249100EB9D80 /* ResetCell.swift in Sources */,
