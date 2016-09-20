@@ -8,40 +8,41 @@
 
 class Save: NSObject {
     let score: Int
-    var dateTimeComponents: AnyObject = 0
+    var dateTimeComponents: AnyObject = 0 as AnyObject
     
     init(value:Int){
         self.score = value
         super.init()
         // get the current date and time
-        let currentDateTime = NSDate()
+        let currentDateTime = Date()
         
         // get the user's calendar
-        let userCalendar = NSCalendar.currentCalendar()
+        let userCalendar = Calendar.current
         
         // choose which date and time components are needed
-        let requestedComponents: NSCalendarUnit = [
-            NSCalendarUnit.Year,
-            NSCalendarUnit.Month,
-            NSCalendarUnit.Day,
-            NSCalendarUnit.Hour,
-            NSCalendarUnit.Minute,
-            NSCalendarUnit.Second
+        let requestedComponents: NSCalendar.Unit = [
+            NSCalendar.Unit.year,
+            NSCalendar.Unit.month,
+            NSCalendar.Unit.day,
+            NSCalendar.Unit.hour,
+            NSCalendar.Unit.minute,
+            NSCalendar.Unit.second
         ]
         
         // get the components
-        dateTimeComponents = userCalendar.components(requestedComponents, fromDate: currentDateTime)
+        dateTimeComponents = (userCalendar as NSCalendar).components(requestedComponents, from: currentDateTime) as AnyObject
         
     }
     
-    func encodeWithCoder(aCoder: NSCoder!) {
-        aCoder.encodeObject(score, forKey:"score")
-        aCoder.encodeObject(dateTimeComponents, forKey:"dateTimeComponents")
+    func encodeWithCoder(_ aCoder: NSCoder!) {
+        aCoder.encode(score, forKey:"score")
+        aCoder.encode(dateTimeComponents, forKey:"dateTimeComponents")
     }
     
     init (coder aDecoder: NSCoder!) {
-        self.score = aDecoder.decodeObjectForKey("score") as! Int
-        self.dateTimeComponents = aDecoder.decodeObjectForKey("dateTimeComponents")! as AnyObject
+        
+        self.score = aDecoder.decodeInteger(forKey: "score") as! Int
+        self.dateTimeComponents = aDecoder.decodeObject(forKey: "dateTimeComponents")! as AnyObject
     }
 
 

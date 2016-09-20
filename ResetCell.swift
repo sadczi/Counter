@@ -9,15 +9,15 @@
 import UIKit
 
 protocol ResetCellDelegate:class {
-    func resetCellDidSelectButton(cell: ResetCell)
+    func resetCellDidSelectButton(_ cell: ResetCell)
 }
 
 class ResetCell: UITableViewCell , UITableViewDelegate {
 
     var cellDelegate: ResetCellDelegate?
     
-    @IBAction func ResetAction(sender: AnyObject) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    @IBAction func ResetAction(_ sender: AnyObject) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.savingLoadingArray.removeAll()
         appDelegate.savingLoadingArray.save()
         selectedAction()
@@ -33,7 +33,7 @@ class ResetCell: UITableViewCell , UITableViewDelegate {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

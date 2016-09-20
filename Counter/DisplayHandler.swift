@@ -14,11 +14,11 @@ class DisplayHandler: NSObject {
         super.init()
     }
     
-    func returnImagerForImageView(number:Int) -> UIImage{
+    func returnImagerForImageView(_ number:Int) -> UIImage{
         return UIImage(named: "number_\(number)")!
     }
     
-    func returnSmallImageForImageView(number:Int) -> UIImage{
+    func returnSmallImageForImageView(_ number:Int) -> UIImage{
         return UIImage(named: "number_\(number)_smal")!
     }
     

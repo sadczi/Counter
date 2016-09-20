@@ -7,12 +7,32 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class SecondViewController: UIViewController , UITableViewDataSource, UITableViewDelegate , ResetCellDelegate {
     @IBOutlet weak var table: UITableView!
     
     var countingCells:Int = 0
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +40,16 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
         table.dataSource = self
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadSaves()
         print(appDelegate.savingLoadingArray.count)
         table.reloadData()
     }
 
-    func dataStringDisplayPrepare(input: String) -> String {
+    func dataStringDisplayPrepare(_ input: String) -> String {
         //Making data format strings from numbers example: 1 changes into 01
-        let returnString:String
+        var returnString:String
         
         if(Int(input)<10){
             returnString = "0" + input
@@ -37,33 +57,40 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
             returnString = input
         }
         
+        if(Int(input)>2000){
+            returnString = String(Int(input)! - 2000)
+        }
+        
         return returnString
     }
         
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if(countingCells == appDelegate.self.savingLoadingArray.count){
-            let cell = tableView.dequeueReusableCellWithIdentifier("ResetCell", forIndexPath: indexPath) as! ResetCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ResetCell", for: indexPath) as! ResetCell
                 cell.cellDelegate = self
                 countingCells = 0
             
                 return cell
         }else{
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! Cell
-            var tmpString = "Count = " + String(appDelegate.savingLoadingArray[indexPath.row].score) + "  "
-            tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[indexPath.row].dateTimeComponents.day))") + "/"
-            tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[indexPath.row].dateTimeComponents.month))") + "/"
-            tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[indexPath.row].dateTimeComponents.year))")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! Cell
+            var tmpString = "#" + String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].score) + "  "
+            tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].dateTimeComponents.day))") + "/"
+            tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].dateTimeComponents.month))") + "/"
+            tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].dateTimeComponents.year))") + " "
+             tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].dateTimeComponents.hour))") + ":"
+             tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].dateTimeComponents.minute))") + ":"
+             tmpString += dataStringDisplayPrepare("\(String(appDelegate.savingLoadingArray[(indexPath as NSIndexPath).row].dateTimeComponents.second))")
             cell.textView.text = tmpString
-            cell.textView.userInteractionEnabled = true
-            cell.textView.editable = false
+            cell.textView.isUserInteractionEnabled = true
+            cell.textView.isEditable = false
             countingCells += 1
             
             return cell
         }
     }
     
-    func tableView(tableView:UITableView, numberOfRowsInSection section:Int) -> Int
+    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
     {
         if ( (self.appDelegate.savingLoadingArray.count + 1) == 1 ){
             return 0
@@ -72,19 +99,19 @@ class SecondViewController: UIViewController , UITableViewDataSource, UITableVie
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func resetCellDidSelectButton(cell: ResetCell) {
+    func resetCellDidSelectButton(_ cell: ResetCell) {
         table.reloadData()
     }
     
     func loadSaves(){
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
-        let path: AnyObject = paths[0]
-        let arrPath = path.stringByAppendingString("/array.plist")
-        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObjectWithFile(arrPath) as? [Save] {
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
+        let path: AnyObject = paths[0] as AnyObject
+        let arrPath = path.appending("/array.plist")
+        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObject(withFile: arrPath) as? [Save] {
             self.appDelegate.savingLoadingArray = tempArr
         }
     }

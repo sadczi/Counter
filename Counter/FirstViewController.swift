@@ -11,7 +11,7 @@ import UIKit
 
 class FirstViewController: UIViewController {
 
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var centerImageView: UIImageView = UIImageView()
     var unitsImageView: UIImageView = UIImageView()
     var decimalImageView: UIImageView = UIImageView()
@@ -19,14 +19,14 @@ class FirstViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
-    @IBAction func saveAction(sender: AnyObject) {
+    @IBAction func saveAction(_ sender: AnyObject) {
         let save = Save(value: dataHandler.counter)
         dataHandler.reset()
         centerImageView.image = displayHandler.returnImagerForImageView(0)
-        label.hidden = true
-        centerImageView.hidden = false
-        unitsImageView.hidden = true
-        decimalImageView.hidden = true
+        label.isHidden = true
+        centerImageView.isHidden = false
+        unitsImageView.isHidden = true
+        decimalImageView.isHidden = true
         appDelegate.savingLoadingArray.append(save)
         appDelegate.savingLoadingArray.save()
         
@@ -40,29 +40,33 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        label = UILabel(frame: CGRect(x:0, y: 0, width: 100, height: 50))
         view.addSubview(centerImageView)
         view.addSubview(unitsImageView)
         view.addSubview(decimalImageView)
-        label = UILabel(frame: CGRect(x:0, y: 0, width: 100, height: 50))
         view.addSubview(label)
         let tap = UITapGestureRecognizer(target: self, action: #selector(FirstViewController.taped))
         centerImageView.image = displayHandler.returnImagerForImageView(0)
         self.view.addGestureRecognizer(tap)
-        label.hidden = true
-        saveButton.backgroundColor = UIColor.redColor()
+        label.isHidden = true
+        saveButton.backgroundColor = UIColor.red
         saveButton.frame.size.width = 300
         loadSaves()
         imageViewsSizing()
+        view.addSubview(centerImageView)
+        view.addSubview(unitsImageView)
+        view.addSubview(decimalImageView)
+        view.addSubview(label)
         print("center \(view.center)")
         print("Image center \(centerImageView.center)")
-        print("height \(UIScreen.mainScreen().bounds.size.height)")
-        print("width  \(UIScreen.mainScreen().bounds.size.width)")
+        print("height \(UIScreen.main.bounds.size.height)")
+        print("width  \(UIScreen.main.bounds.size.width)")
         
         
         
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
@@ -71,15 +75,15 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        UIDevice.currentDevice().orientation.isFlat
-        if UIDevice.currentDevice().orientation.isLandscape.boolValue {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        UIDevice.current.orientation.isFlat
+        if UIDevice.current.orientation.isLandscape {
             print("Landscape")
             imageViewsSizing(size)
             print("center \(view.center)")
             print("Image center \(centerImageView.center)")
-            print("height \(UIScreen.mainScreen().bounds.size.height)")
-            print("width  \(UIScreen.mainScreen().bounds.size.width)")
+            print("height \(UIScreen.main.bounds.size.height)")
+            print("width  \(UIScreen.main.bounds.size.width)")
             print(size)
             
         } else {
@@ -87,8 +91,8 @@ class FirstViewController: UIViewController {
             imageViewsSizing(size)
             print("center \(view.center)")
             print("Image center \(centerImageView.center)")
-            print("height \(UIScreen.mainScreen().bounds.size.height)")
-            print("width  \(UIScreen.mainScreen().bounds.size.width)")
+            print("height \(UIScreen.main.bounds.size.height)")
+            print("width  \(UIScreen.main.bounds.size.width)")
             print(size)
             
         }
@@ -96,12 +100,12 @@ class FirstViewController: UIViewController {
     
     
     func imageViewsSizing(){
-        let width = UIScreen.mainScreen().bounds.size.width
-        let height = UIScreen.mainScreen().bounds.size.height
+        let width = UIScreen.main.bounds.size.width
+        let height = UIScreen.main.bounds.size.height
         
         
         
-        centerImageView.bounds.size.width = width / 3
+        centerImageView.bounds.size.width = width / 2
         centerImageView.bounds.size.height = height / 3
         
         unitsImageView.bounds.size.width = width / 3
@@ -128,12 +132,12 @@ class FirstViewController: UIViewController {
         
     }
     
-    func imageViewsSizing(size: CGSize){
+    func imageViewsSizing(_ size: CGSize){
         let width = size.width
         let height = size.height
         
         
-        if( width > UIScreen.mainScreen().bounds.size.width ){
+        if( width > UIScreen.main.bounds.size.width ){
             centerImageView.bounds.size.width = width / 3
         }else{
             centerImageView.bounds.size.width = width / 2
@@ -166,10 +170,10 @@ class FirstViewController: UIViewController {
     }
 
     func loadSaves(){
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory,NSSearchPathDomainMask.AllDomainsMask, true)
-        let path: AnyObject = paths[0]
-        let arrPath = path.stringByAppendingString("/array.plist")
-        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObjectWithFile(arrPath) as? [Save] {
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,FileManager.SearchPathDomainMask.allDomainsMask, true)
+        let path: AnyObject = paths[0] as AnyObject
+        let arrPath = path.appending("/array.plist")
+        if let tempArr: [Save] = NSKeyedUnarchiver.unarchiveObject(withFile: arrPath) as? [Save] {
             self.appDelegate.savingLoadingArray = tempArr
         }
     }
@@ -180,19 +184,19 @@ class FirstViewController: UIViewController {
         dataHandler.checkUnits()
         if(dataHandler.checkDecimals() && dataHandler.hundrets > 0){
             label.text = "+\(dataHandler.hundrets)00"
-            label.hidden = false
+            label.isHidden = false
         }
             if(dataHandler.decimals == 0){
-                unitsImageView.hidden = true
-                decimalImageView.hidden = true
+                unitsImageView.isHidden = true
+                decimalImageView.isHidden = true
                 centerImageView.image = displayHandler.returnImagerForImageView(dataHandler.units)
-                centerImageView.hidden = false
+                centerImageView.isHidden = false
             } else{
-                centerImageView.hidden = true
+                centerImageView.isHidden = true
                 unitsImageView.image = displayHandler.returnSmallImageForImageView(dataHandler.units)
                 decimalImageView.image = displayHandler.returnSmallImageForImageView(dataHandler.decimals)
-                unitsImageView.hidden = false
-                decimalImageView.hidden = false
+                unitsImageView.isHidden = false
+                decimalImageView.isHidden = false
             }
         print(dataHandler.counter)
     }
