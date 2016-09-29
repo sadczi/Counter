@@ -76,7 +76,7 @@ class FirstViewController: UIViewController {
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        UIDevice.current.orientation.isFlat
+       // UIDevice.current.orientation.isFlat
         if UIDevice.current.orientation.isLandscape {
             print("Landscape")
             imageViewsSizing(size)
@@ -104,9 +104,9 @@ class FirstViewController: UIViewController {
         let height = UIScreen.main.bounds.size.height
         
         
-        
         centerImageView.bounds.size.width = width / 2
         centerImageView.bounds.size.height = height / 3
+        
         
         unitsImageView.bounds.size.width = width / 3
         unitsImageView.bounds.size.height = height / 3

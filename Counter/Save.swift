@@ -41,7 +41,7 @@ class Save: NSObject {
     
     init (coder aDecoder: NSCoder!) {
         
-        self.score = aDecoder.decodeInteger(forKey: "score") as! Int
+        self.score = aDecoder.decodeInteger(forKey: "score") as Int
         self.dateTimeComponents = aDecoder.decodeObject(forKey: "dateTimeComponents")! as AnyObject
     }
 
